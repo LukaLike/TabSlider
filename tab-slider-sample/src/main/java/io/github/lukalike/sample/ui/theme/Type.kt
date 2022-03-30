@@ -1,4 +1,4 @@
-package com.lukalike.sample.ui.theme
+package io.github.lukalike.sample.ui.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle

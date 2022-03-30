@@ -1,4 +1,4 @@
-package com.lukalike.tabslider
+package io.github.lukalike.tabslider
 
 import android.graphics.Paint
 import android.graphics.RectF

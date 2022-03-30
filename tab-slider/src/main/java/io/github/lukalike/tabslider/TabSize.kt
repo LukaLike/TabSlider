@@ -1,4 +1,4 @@
-package com.lukalike.tabslider
+package io.github.lukalike.tabslider
 
 /**
  * TabSlider's sizes that can be used

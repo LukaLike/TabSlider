@@ -1,4 +1,4 @@
-package com.lukalike.tabslider
+package io.github.lukalike.tabslider
 
 import androidx.compose.ui.graphics.Color
 

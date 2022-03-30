@@ -1,4 +1,4 @@
-package com.lukalike.sample
+package io.github.lukalike.sample
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -15,9 +15,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.lukalike.sample.ui.theme.TabSliderTheme
-import com.lukalike.tabslider.TabSize
-import com.lukalike.tabslider.TabSlider
+import io.github.lukalike.sample.ui.theme.TabSliderTheme
+import io.github.lukalike.tabslider.TabSize
+import io.github.lukalike.tabslider.TabSlider
 
 @ExperimentalComposeUiApi
 class MainActivity : ComponentActivity() {

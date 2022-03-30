@@ -1,4 +1,4 @@
-package com.lukalike.tabslider
+package io.github.lukalike.tabslider
 
 // Constants
 const val RECT_CORNER_RADIUS = 5F
