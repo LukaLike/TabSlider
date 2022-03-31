@@ -3,6 +3,23 @@ plugins {
     id 'kotlin-android'
 }
 
+ext {
+    PUBLISH_GROUP_ID = 'io.github.lukalike'
+    PUBLISH_VERSION = '1.0.0'
+    PUBLISH_ARTIFACT_ID = 'tabslider'
+    PUBLISH_DESCRIPTION = 'An expanding slider widget which displays selected value.'
+    PUBLISH_URL = 'https://github.com/LukaLike/TabSlider'
+    PUBLISH_LICENSE_NAME = 'The Apache Software License, Version 2.0'
+    PUBLISH_LICENSE_URL = 'https://github.com/LukaLike/TabSlider/blob/master/LICENSE'
+    PUBLISH_DEVELOPER_ID = 'LukaLike'
+    PUBLISH_DEVELOPER_NAME = 'Lukas Kulikovas'
+    PUBLISH_SCM_CONNECTION = 'scm:git:github.com/LukaLike/TabSlider.git'
+    PUBLISH_SCM_DEVELOPER_CONNECTION = 'scm:git:ssh://github.com/LukaLike/TabSlider.git'
+    PUBLISH_SCM_URL = 'https://github.com/LukaLike/TabSlider/tree/master'
+}
+
+apply from: "${rootProject.projectDir}/scripts/publish-module.gradle"
+
 android {
     compileSdk 31
 
