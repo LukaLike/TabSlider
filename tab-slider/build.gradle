@@ -13,6 +13,7 @@ ext {
     PUBLISH_LICENSE_URL = 'https://github.com/LukaLike/TabSlider/blob/master/LICENSE'
     PUBLISH_DEVELOPER_ID = 'LukaLike'
     PUBLISH_DEVELOPER_NAME = 'Lukas Kulikovas'
+    PUBLISH_DEVELOPER_EMAIL = ''
     PUBLISH_SCM_CONNECTION = 'scm:git:github.com/LukaLike/TabSlider.git'
     PUBLISH_SCM_DEVELOPER_CONNECTION = 'scm:git:ssh://github.com/LukaLike/TabSlider.git'
     PUBLISH_SCM_URL = 'https://github.com/LukaLike/TabSlider/tree/master'
