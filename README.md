@@ -1,5 +1,9 @@
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.lukalike/tabslider.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22io.github.lukalike%22%20AND%20a:%22tabslider%22)
+
 # TabSlider
 An expanding slider widget which displays selected value.
+
+![tab_slider](https://user-images.githubusercontent.com/69643163/161287746-35549c56-02dc-4615-8852-c2d42512e34f.gif)
 
 ## Installation
 Add the code below to your **root** `build.gradle` file:
@@ -14,7 +18,7 @@ allprojects {
 Next, add the dependency below to your **module**'s `build.gradle` file:
 ```gradle
 dependencies {
-    implementation '???'
+    implementation 'io.github.lukalike:tabslider:1.0.0'
 }
 ```
 
