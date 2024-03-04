@@ -18,7 +18,7 @@ allprojects {
 Next, add the dependency below to your **module**'s `build.gradle` file:
 ```gradle
 dependencies {
-    implementation 'io.github.lukalike:tabslider:1.0.0'
+    implementation 'io.github.lukalike:tabslider:1.0.1'
 }
 ```
 
