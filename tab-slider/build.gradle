@@ -13,7 +13,7 @@ ext {
     PUBLISH_LICENSE_URL = 'https://github.com/LukaLike/TabSlider/blob/master/LICENSE'
     PUBLISH_DEVELOPER_ID = 'LukaLike'
     PUBLISH_DEVELOPER_NAME = 'Lukas Kulikovas'
-    PUBLISH_DEVELOPER_EMAIL = ''
+    PUBLISH_DEVELOPER_EMAIL = 'lukas.kulikovas@tuta.io'
     PUBLISH_SCM_CONNECTION = 'scm:git:github.com/LukaLike/TabSlider.git'
     PUBLISH_SCM_DEVELOPER_CONNECTION = 'scm:git:ssh://github.com/LukaLike/TabSlider.git'
     PUBLISH_SCM_URL = 'https://github.com/LukaLike/TabSlider/tree/master'
@@ -22,13 +22,13 @@ ext {
 apply from: "${rootProject.projectDir}/scripts/publish-module.gradle"
 
 android {
-    compileSdk 31
+    namespace = "io.github.lukalike"
+
+    compileSdk 34
 
     defaultConfig {
         minSdk 21
-        targetSdk 31
-        versionCode 1
-        versionName "1.0"
+        targetSdk 34
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -43,22 +43,21 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = '11'
-        useIR = true
+        jvmTarget = "17"
     }
     buildFeatures {
         compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion compose_version
+        kotlinCompilerExtensionVersion compose_compiler_version
     }
     packagingOptions {
         resources {
-            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
 }

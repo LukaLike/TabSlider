@@ -1,6 +1,5 @@
 package io.github.lukalike.tabslider
 
-// Constants
 const val RECT_CORNER_RADIUS = 5F
 const val TAB_CORNER_RADIUS = 2F
 

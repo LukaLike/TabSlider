@@ -9,13 +9,18 @@ import androidx.compose.animation.core.tween
 import androidx.compose.animation.core.updateTransition
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
+import androidx.compose.foundation.gestures.awaitEachGesture
 import androidx.compose.foundation.gestures.awaitFirstDown
-import androidx.compose.foundation.gestures.forEachGesture
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.CornerRadius
@@ -26,7 +31,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
 import androidx.compose.ui.graphics.nativeCanvas
 import androidx.compose.ui.graphics.toArgb
-import androidx.compose.ui.input.pointer.*
+import androidx.compose.ui.input.pointer.AwaitPointerEventScope
+import androidx.compose.ui.input.pointer.PointerEvent
+import androidx.compose.ui.input.pointer.PointerInputChange
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.IntSize
@@ -81,7 +89,7 @@ fun TabSlider(
 
     onSliderTouch: (() -> Unit)? = null,
     onPositionChange: ((Float) -> Unit)? = null,
-    onSliderRelease: (() -> Unit)? = null
+    onSliderRelease: (() -> Unit)? = null,
 ) {
     val density = LocalContext.current.resources.displayMetrics.density
 
@@ -92,7 +100,7 @@ fun TabSlider(
     val tab = RectF()
 
     // Current position of the tab
-    var position by remember { mutableStateOf(max(0F, min(1F, initPosition))) }
+    var position by remember { mutableFloatStateOf(max(0F, min(1F, initPosition))) }
 
     // State & transition data of the tab
     var state by remember { mutableStateOf(TabState.Collapsed) }
@@ -112,18 +120,16 @@ fun TabSlider(
                 .fillMaxWidth()
                 .height(tabSize.value.dp)
                 .pointerInput(Unit) {
-                    forEachGesture {
-                        awaitPointerEventScope {
-                            onUpdate(
-                                onSliderTouch,
-                                onPositionChange,
-                                onSliderRelease,
-                                mainRect,
-                                tab
-                            ) { newPos, newTabState ->
-                                newPos?.let { position = it }
-                                state = newTabState
-                            }
+                    awaitEachGesture {
+                        onUpdate(
+                            onSliderTouch,
+                            onPositionChange,
+                            onSliderRelease,
+                            mainRect,
+                            tab
+                        ) { newPos, newTabState ->
+                            newPos?.let { position = it }
+                            state = newTabState
                         }
                     }
                 }
@@ -200,7 +206,7 @@ private fun updateTransitionData(
     collapsedTabColor: Color,
     collapsedTabHeight: Float,
     expandedTabColor: Color,
-    animationDuration: Int
+    animationDuration: Int,
 ): TransitionData {
     val transition = updateTransition(tabState, label = "Transition")
 
@@ -244,10 +250,10 @@ private suspend fun AwaitPointerEventScope.onUpdate(
     onSliderRelease: (() -> Unit)?,
     mainRect: RectF,
     tab: RectF,
-    param: (Float?, TabState) -> Unit
+    param: (Float?, TabState) -> Unit,
 ) {
     val down: PointerInputChange = this.awaitFirstDown()
-    down.consumeDownChange()
+    down.consume()
 
     // Invoke after the initial press
     onSliderTouch?.invoke()
@@ -267,7 +273,7 @@ private suspend fun AwaitPointerEventScope.onUpdate(
     } while (
         event.changes.any {
             if (!it.pressed) {
-                it.consumeDownChange()
+                it.consume()
 
                 // Invoke after releasing
                 onSliderRelease?.invoke()
@@ -296,7 +302,7 @@ private fun getPositionValue(position: Float, mainRect: RectF, tab: RectF) =
 private fun Canvas.drawText(
     text: String, rect: RectF,
     color: Color, align: Paint.Align,
-    offset: Float, density: Float, y: Float
+    offset: Float, density: Float, y: Float,
 ) {
     val paint = Paint()
 
