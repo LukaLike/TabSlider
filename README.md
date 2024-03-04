@@ -50,6 +50,28 @@ TabSlider(
 )
 ```
 
+## Properties
+
+| Parameter                | Type                 | Default                  | Description                                                                                                                                                                                                                                                                                           |
+| ------------------------ | -------------------- | ------------------------ | ----------------------------- |
+| `modifier`               | Modifier             | Modifier                 | TabSlider's modifier          |                  
+| `initPosition`           | Float                | 0F                       | Initial position of the tab, ranging from `0.0F` to `1.0F` |   
+| `tabSize`                | TabSize              | TabSize.SMALL            | Size of the tab |   
+| `animationDuration`      | Int                  | 300                      | Animation duration of the tab state changes in milliseconds |   
+| `startText`              | String               | "0"                      | Start text of the TabSlider |   
+| `endText`                | String               | "100"                    | End text of the TabSlider |   
+| `tabText`                | String?              | null                     | Text of the tab |   
+| `rectColor`              | Color                | Blue                     | Color of the TabSlider |   
+| `collapsedTabColor`      | Color                | DarkBlue                 | Color of the collapsed tab |   
+| `expandedTabColor`       | Color                | TransparentBlue          | Color of the expanded tab |   
+| `rectTextColor`          | Color                | Color.White              | Text color of the TabSlider |   
+| `tabTextColor`           | Color                | Color.White              | Text color of the tab |   
+| `backgroundColor`        | Color                | Color.LightGray          | Color of the background |   
+| `rectCornerRadius`       | CornerRadius         | CornerRadius(5F, 5F)     | Corner of the TabSlider |   
+| `tabCornerRadius`        | CornerRadius         | CornerRadius(2F, 2F)     | Corner of the tab |
+| `onSliderTouch`          | (() -> Unit)?        | null                     | Listener of the on slide event |   
+| `onPositionChange`       | (() -> Unit)?        | null                     | Listener of the position change event, ranging from `0.0F` to `1.0F` |   
+| `onSliderRelease`        | (() -> Unit)?        | null                     | Listener of the release event |   
 
 ## License
-**Tab Slider** is released under the **Apache-2.0 License**. See [LICENSE](./LICENSE) for details.
+**TabSlider** is released under the **Apache-2.0 License**. See [LICENSE](./LICENSE) for details.
