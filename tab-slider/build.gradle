@@ -5,7 +5,7 @@ plugins {
 
 ext {
     PUBLISH_GROUP_ID = 'io.github.lukalike'
-    PUBLISH_VERSION = '1.0.0'
+    PUBLISH_VERSION = '1.0.1'
     PUBLISH_ARTIFACT_ID = 'tabslider'
     PUBLISH_DESCRIPTION = 'An expanding slider widget which displays selected value.'
     PUBLISH_URL = 'https://github.com/LukaLike/TabSlider'
