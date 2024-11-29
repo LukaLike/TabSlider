@@ -1,4 +1,4 @@
-[![Maven Central](https://img.shields.io/maven-central/v/io.github.lukalike/tabslider.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22io.github.lukalike%22%20AND%20a:%22tabslider%22)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.lukalike/tabslider.svg?label=Maven%20Central)](https://central.sonatype.com/artifact/io.github.lukalike/tabslider)
 
 # TabSlider
 An expanding slider widget which displays selected value.
