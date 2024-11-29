@@ -5,6 +5,7 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
+
 rootProject.name = "Tab Slider"
 include ':tab-slider'
 include ':tab-slider-sample'

@@ -1,22 +1,10 @@
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
-}
 
-ext {
-    PUBLISH_GROUP_ID = 'io.github.lukalike'
-    PUBLISH_VERSION = '1.0.1'
-    PUBLISH_ARTIFACT_ID = 'tabslider'
-    PUBLISH_DESCRIPTION = 'An expanding slider widget which displays selected value.'
-    PUBLISH_URL = 'https://github.com/LukaLike/TabSlider'
-    PUBLISH_LICENSE_NAME = 'The Apache Software License, Version 2.0'
-    PUBLISH_LICENSE_URL = 'https://github.com/LukaLike/TabSlider/blob/master/LICENSE'
-    PUBLISH_DEVELOPER_ID = 'LukaLike'
-    PUBLISH_DEVELOPER_NAME = 'Lukas Kulikovas'
-    PUBLISH_DEVELOPER_EMAIL = 'lukas.kulikovas@tuta.io'
-    PUBLISH_SCM_CONNECTION = 'scm:git:github.com/LukaLike/TabSlider.git'
-    PUBLISH_SCM_DEVELOPER_CONNECTION = 'scm:git:ssh://github.com/LukaLike/TabSlider.git'
-    PUBLISH_SCM_URL = 'https://github.com/LukaLike/TabSlider/tree/master'
+    alias libs.plugins.compose.compiler
+    alias(libs.plugins.maven.publish)
+    alias(libs.plugins.nmcp)
 }
 
 apply from: "${rootProject.projectDir}/scripts/publish-module.gradle"
@@ -24,11 +12,11 @@ apply from: "${rootProject.projectDir}/scripts/publish-module.gradle"
 android {
     namespace = "io.github.lukalike"
 
-    compileSdk 34
+    compileSdk 35
 
     defaultConfig {
         minSdk 21
-        targetSdk 34
+        targetSdk 35
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -52,9 +40,6 @@ android {
     buildFeatures {
         compose true
     }
-    composeOptions {
-        kotlinCompilerExtensionVersion compose_compiler_version
-    }
     packagingOptions {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
@@ -63,6 +48,17 @@ android {
 }
 
 dependencies {
-    implementation "androidx.compose.ui:ui:$compose_version"
-    implementation "androidx.compose.material:material:$compose_version"
+    implementation libs.androidx.compose.ui
+    implementation libs.androidx.compose.material
+}
+
+nmcp {
+    publishAllPublications {
+        def keyUsername = "SONATYPE_USERNAME"
+        def keyPassword = "SONATYPE_PASSWORD"
+        username = findProperty(keyUsername)?.toString() ?: System.getenv(keyUsername)
+        password = findProperty(keyPassword)?.toString() ?: System.getenv(keyPassword)
+
+        publicationType = "USER_MANAGED"
+    }
 }
