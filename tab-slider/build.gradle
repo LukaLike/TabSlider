@@ -7,8 +7,6 @@ plugins {
     alias(libs.plugins.nmcp)
 }
 
-apply from: "${rootProject.projectDir}/scripts/publish-module.gradle"
-
 android {
     namespace = "io.github.lukalike"
 
@@ -50,6 +48,9 @@ android {
 dependencies {
     implementation libs.androidx.compose.ui
     implementation libs.androidx.compose.material
+    implementation libs.androidx.ui.tooling.preview
+
+    debugImplementation libs.androidx.ui.tooling
 }
 
 nmcp {

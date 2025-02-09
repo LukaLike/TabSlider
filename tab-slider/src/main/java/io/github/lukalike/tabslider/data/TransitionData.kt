@@ -1,4 +1,4 @@
-package io.github.lukalike.tabslider
+package io.github.lukalike.tabslider.data
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
