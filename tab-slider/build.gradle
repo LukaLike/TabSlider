@@ -9,6 +9,7 @@ plugins {
 
 android {
     namespace = "io.github.lukalike"
+    version = findProperty("VERSION_NAME") as String
 
     compileSdk 35
 
